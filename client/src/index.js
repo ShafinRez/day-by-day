@@ -5,7 +5,12 @@ import Login from './components/Login';
 
 
 ReactDOM.render(
-    <Login />,
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '10em'
+}}><Login /></div>,
   document.getElementById('root')
 );
 
