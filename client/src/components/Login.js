@@ -1,19 +1,23 @@
-import React from "react";
-import {
-  Grid,
-  TextField,
-  Button,
-  InputAdornment,
-  Box,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Grid, TextField, Button, InputAdornment, Box } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 
-// div 500 500 | card.x < div.x, card.y < div.y)
-
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const userChange = (e) => {
+    setUsername(e.currentTarget.value);
+    // console.log("Typed =>" + username);
+  };
+  const passwordChange = (e) => {
+    setPassword(e.currentTarget.value)
+  };
+  const handleSubmit = () => {
+    console.log(username, password)
+  }
   return (
-    <Box border={1} borderColor={"red"} sx={{maxWidth: "60%"}}>
+    <Box border={1} borderColor={"red"} sx={{ maxWidth: "60%" }}>
       <Grid
         container
         display="flex"
@@ -23,14 +27,20 @@ function Login() {
       >
         <Grid item>
           <img
-            // src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/102014/apple_30th_0.png?itok=_wdnU5Wk"
-            src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png"
+            src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/102014/apple_30th_0.png?itok=_wdnU5Wk"
+            // src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png"
             width={300}
             alt="Our logo"
           />
         </Grid>
-        <Grid item collection display="flex" justifyContent={"center"} columnGap={1}>
+        <Grid
+          collection
+          display="flex"
+          justifyContent={"center"}
+          columnGap={1}
+        >
           <TextField
+            onChange={userChange}
             sx={{ backgroundColor: "white" }}
             variant="filled"
             label="Email"
@@ -44,6 +54,7 @@ function Login() {
             }}
           />
           <TextField
+            onChange={passwordChange}
             sx={{ backgroundColor: "white" }}
             variant="filled"
             label="Password"
@@ -59,13 +70,10 @@ function Login() {
           />
         </Grid>
         <Grid item container direction={"column"} rowGap={1}>
-          <Button variant="contained">Log in</Button>
+          <Button variant="contained" onClick={handleSubmit}>Log in</Button>
           <Button variant="contained">Interested in joining?</Button>
         </Grid>
       </Grid>
-      
-          
-      
     </Box>
   );
 }
